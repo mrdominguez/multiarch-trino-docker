@@ -6,7 +6,7 @@ Build a multi-architecture Trino Docker image (amd64, arm64).
 
 This project is based on the open source code, which does not provide a way to build a multi-platform image: https://github.com/trinodb/trino/tree/master/core/docker
 
-Trino needs a 64-bit version of Java 24, with a minimum required version of 24.0.1. Also, Eclipse Temurin OpenJDK (provided by Adoptium) is the recommended JDK distribution for Trino.
+Trino needs a 64-bit version of Java 24, with a minimum required version of 24.0.1. The recommended JDK distribution is Eclipse Temurin OpenJDK (Adoptium).
 
 ## Details about my environment
 #### OS: Ubuntu 24.04 on WSL2 (Windows 11)
