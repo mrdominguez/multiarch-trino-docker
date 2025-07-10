@@ -70,10 +70,10 @@ while getopts ":ma:hr:p:t:x" o; do
 done
 shift $((OPTIND - 1))
 
-TRINO_MAVEN_URL=https://repo1.maven.org/maven2/io/trino
+TRINO_REPO=https://repo1.maven.org/maven2/io/trino
 echo "Downloading server and client artifacts for release version ${TRINO_VERSION}"
-curl -s -O -L -C - $TRINO_MAVEN_URL/${SERVER_ARTIFACT}/${TRINO_VERSION}/${SERVER_ARTIFACT}-${TRINO_VERSION}.tar.gz
-curl -s -O -L -C - $TRINO_MAVEN_URL/trino-cli/${TRINO_VERSION}/trino-cli-${TRINO_VERSION}-executable.jar
+curl -s -O -L -C - ${TRINO_REPO}/${SERVER_ARTIFACT}/${TRINO_VERSION}/${SERVER_ARTIFACT}-${TRINO_VERSION}.tar.gz
+curl -s -O -L -C - ${TRINO_REPO}/trino-cli/${TRINO_VERSION}/trino-cli-${TRINO_VERSION}-executable.jar
 chmod +x trino-cli-${TRINO_VERSION}-executable.jar
 
 echo "Preparing the image build context directory"
@@ -97,7 +97,7 @@ for arch in "${ARCHITECTURES[@]}"; do
     [[ "${arch}" == "arm64" ]] && arch="aarch64"
     [[ "${arch}" == "amd64" ]] && arch="x64"
     JDK_REPO="https://github.com/adoptium/temurin${JAVA_MAJOR_VER}-binaries/releases/download/jdk-${JAVA_VERSION/_/+}"
-    JRE="$JDK_REPO/OpenJDK${JAVA_MAJOR_VER}U-jre_${arch}_linux_hotspot_${JAVA_VERSION}.tar.gz"
+    JRE="${JDK_REPO}/OpenJDK${JAVA_MAJOR_VER}U-jre_${arch}_linux_hotspot_${JAVA_VERSION}.tar.gz"
     [[ "${arch}" == "aarch64" ]] && arch="arm64"
     [[ "${arch}" == "x64" ]] && arch="amd64"
     curl -s -L -C - $JRE -o OpenJDK${JAVA_MAJOR_VER}-jre_${arch}.tar.gz
