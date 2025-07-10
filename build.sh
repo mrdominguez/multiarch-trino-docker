@@ -100,8 +100,8 @@ for arch in "${ARCHITECTURES[@]}"; do
     JRE="$JDK_REPO/OpenJDK${JAVA_MAJOR_VER}U-jre_${arch}_linux_hotspot_${JAVA_VERSION}.tar.gz"
     [[ "${arch}" == "aarch64" ]] && arch="arm64"
     [[ "${arch}" == "x64" ]] && arch="amd64"
-    curl -s -L -C - $JRE -o OpenJDK${JAVA_MAJOR_VER}U-jre_${arch}.tar.gz
-    cp OpenJDK${JAVA_MAJOR_VER}U*_${arch}.tar.gz "${WORK_DIR}/"
+    curl -s -L -C - $JRE -o OpenJDK${JAVA_MAJOR_VER}-jre_${arch}.tar.gz
+    cp OpenJDK${JAVA_MAJOR_VER}*_${arch}.tar.gz "${WORK_DIR}/"
 done
 
 TAG="${TAG_PREFIX}:${TRINO_VERSION}"
