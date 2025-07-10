@@ -18,7 +18,7 @@ FROM registry.access.redhat.com/ubi9/ubi-minimal:latest AS jdk
 ARG JDK_VERSION
 ENV JAVA_HOME="/usr/lib/jvm/${JDK_VERSION}"
 
-COPY OpenJDK24U-*.tar.gz /tmp
+COPY OpenJDK*.tar.gz /tmp
 RUN \
     set -xeuo pipefail && \
     microdnf install -y tar gzip && \
@@ -26,7 +26,7 @@ RUN \
     [ "${ARCH}" = "aarch64" ] && ARCH="arm64"; \
     [ "${ARCH}" = "x86_64" ] && ARCH="amd64"; \
     mkdir -p "${JAVA_HOME}" && \
-    tar -zxf /tmp/OpenJDK24U-jre_${ARCH}.tar.gz --strip 1 -C ${JAVA_HOME}
+    tar -zxf /tmp/OpenJDK*_${ARCH}.tar.gz --strip 1 -C ${JAVA_HOME}
 
 FROM registry.access.redhat.com/ubi9/ubi:latest AS packages
 
