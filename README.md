@@ -250,7 +250,7 @@ ERROR: docker exporter does not currently support exporting manifest lists
 #### Enable containerd image store
 https://docs.docker.com/engine/storage/containerd/#enable-containerd-image-store-on-docker-engine
 
-> Switching to containerd snapshotters causes to temporarily lose images and containers created using the classic storage drivers. Those resources still exist on your filesystem, and you can retrieve them by turning off the containerd snapshotters feature.
+> Switching to containerd snapshotters causes you to temporarily lose images and containers created using the classic storage drivers. Those resources still exist on your filesystem, and you can retrieve them by turning off the containerd snapshotters feature.
 
 ```
 core@core-10920x:~$ docker info -f '{{ .DriverStatus }}'
